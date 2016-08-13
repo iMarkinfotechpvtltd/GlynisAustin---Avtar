@@ -6,9 +6,6 @@ $display_count=2;
 
  $paged=$_POST['page_val1'];
  $category = $_POST['cat'];
-
- 
- 
 					$posts=get_posts(array(
 					   'showposts' => 4,
 					   'paged'   => $paged,
@@ -40,12 +37,27 @@ $display_count=2;
 											} ?>
 										</div>
 										<div class="inner_box">
-											<div class="pad">
-												<h2><?php the_title(); ?></h2>
-												<h5><?php echo get_field('sub_title',$post->ID); ?></h5>
-												<p><?php echo get_field('days_for_visit',$post->ID); ?> <?php echo date(' j, F',time()+86400*$i); ?></p>
-												<p><?php echo get_field('time_for_visit',$post->ID); ?></p>
-											</div>
+											 <div class="pad">
+                                                        <h2><?php the_title(); ?></h2>
+                                                        <h5><?php echo get_field('sub_title',$post->ID); $post1= $post?></h5>
+														<?php $member_id = get_field('assosiatewith',$post->ID); 
+														
+														$d=get_field('days_for_visit',$post1->ID);
+																												
+														//echo $type =gettype($d);
+if($current_category == 'Off-Market Home'){
+	$member = get_post($member_id);	
+}
+													?>
+<p><?php if($current_category == 'Off-Market Home'){ echo 'Agent: '.$member->post_title; ?>
+<p><?php echo 'M: '. get_field('phone_number',$member->ID); ?></p>
+<p><a href="tel:<?php echo get_field('phone_number',$member->ID); ?>"><?php echo 'M: '. get_field('phone_number',$member->ID); ?></a></p>
+<?php } else {
+if(gettype($d) == 'array'){ echo $d[0]; } if(gettype($d) == 'string'){ echo $d; }  ?> 
+<?php echo date(' j, F',time()+86400*$i); ?></p>
+<p><?php echo get_field('time_for_visit',$post1->ID); } $member = null;?></p>
+														
+                                                    </div>
 											<div class="all_detail">
 												<div class="pad">
 													<ul>

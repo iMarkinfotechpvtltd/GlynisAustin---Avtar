@@ -129,6 +129,7 @@
                         -webkit-text-stroke: rgba(255, 255, 255, 0.01) 0.1px;
                         color: #000;
                         overflow-x: hidden;
+                        padding: 0 !important;
                     }
                     .dropdown-toggle::after{display:none !important;}
                     .top_head {
@@ -279,7 +280,10 @@
                     .main_menu .nav li:last-child:after {
                         display: none;
                     }
-                    
+.menu-item.menu-item-type-custom.menu-item-object-custom.menu-item-323{margin: 0;}
+                    .menu-item.menu-item-type-custom.menu-item-object-custom.menu-item-323::after {
+    display: none;
+}
                     .main_menu .nav li a {
                         font-size: 14px;
                         color: #fff;
@@ -789,7 +793,15 @@
                         position: relative;
                         background: #fff url(../images/proprty_bg.jpg) no-repeat right top;
                     }
-                    
+                    .property_week .item {
+    margin: 0 5px !important;
+}
+#off_market_home .item.box1 > p {
+    color: #ffffff;
+    font-size: 18px;
+    margin: 12px 0;
+}
+#off_market_home .item.box1 > p a{color: #fd5e0f ;}
                     .property_week h2 {
                         color: #000;
                     }
@@ -889,7 +901,7 @@
                         height: 545px;
                         background: #f6f6f6;
                         display: block;
-						padding: 0 15px;
+						padding: 0;
                     }
 .box2:hover, .box2:focus{text-decoration: none;}
                     .list_img {
@@ -1072,7 +1084,7 @@
                     
                     .slider_prop {}
                     .slider_prop .item {
-    height: 400px;
+    height: 490px;
     background-size: cover !important;
     width: 100%;
     background-position: 100% center !important;
@@ -3732,6 +3744,169 @@
                     .other_prop h2.title {
                         margin: 0 0 70px;
                     }
+
+
+.form_popup {}
+                    
+                    .form_popup .icon {
+                        border: 1px solid #fd5e0f;
+                        border-radius: 50%;
+                        width: 40px;
+                        height: 40px;
+                        line-height: 40px;
+                        text-align: center;
+                        margin: auto;
+                    }
+                    
+                    .form_popup .icon i {
+                        color: #fd5e0f;
+                        font-size: 19px;
+                    }
+                    
+                    .form_popup h2 {
+                        color: #010101;
+                        font-size: 22px;
+                        text-transform: uppercase;
+                        text-align: center;
+                        font-family: 'Montserrat', sans-serif;
+                        margin: 25px 0 10px;
+                    }
+                    
+                    .form_popup p {
+                        text-align: center;
+                        color: #424040;
+                        font-size: 16px;
+                        font-family: 'Montserrat', sans-serif;
+                    }
+                    
+                    .form-area {
+                        padding: 0 40px;
+                    }
+                    
+                    .form-area input {
+                        border-top: 0 none;
+                        border-right: 0 none;
+                        border-left: 0 none;
+                        border-bottom: 1px solid #a8a4a3;
+                        padding: 0 0 0px;
+                        height: 40px;
+                        line-height: 40px;
+                        width: 100%;
+                        margin: 45px 0 0;
+                        font-family: 'Montserrat', sans-serif;
+                        font-weight: 300;
+                    }
+                    
+                    .form-area p {
+                        font-size: 14px;
+                        color: #fd5e0f;
+                        font-family: 'Montserrat', sans-serif;
+                        font-weight: 300;
+                        margin: 10px 0 0;
+                        text-align: center;
+                    }
+                    
+                    .form-area p a.regstr {
+                        color: #fd5e0f;
+                    }
+                    
+                    .form-area a.frgt_pwd {
+                        float: right;
+                        margin: 15px;
+                        color: #fd5e0f;
+                    }
+                    
+                    .form-area a.frgt_pwd:hover,
+                    .form-area a.frgt_pwd:focus,
+                    .form-area p a.regstr:hover,
+                    .form-area p a.regstr:focus {
+                        color: #000;
+                        text-decoration: none;
+                    }
+                    
+                    .popup_btn {
+                        background: #fd5e0f;
+                        border-radius: 30px;
+                        color: #fff;
+                        text-transform: capitalize;
+                        font-size: 18px;
+                        width: 175px;
+                        height: 38px;
+                       line-height: 0;
+                        text-align: center;
+                        display: block;
+                        margin: 55px auto 5px;
+                    }
+                    
+                    .popup_btn:hover,
+                    .popup_btn:focus, .sbscribe_btn:hover, .sbscribe_btn:focus, #Appraisal .send_button_form:hover, #Appraisal .send_button_form:focus {
+                        text-decoration: none;
+                        color: #fff;
+                        background: #000 !important;
+                    }
+                    
+                    .modal-footer {
+                        border: 0 none;
+                    }
+                    
+                    .modal-header .close {
+                        margin-top: -12px;
+                    }
+.sbscribe_btn{  background: #fd5e0f none repeat scroll 0 0 !important;
+    border-radius: 30px !important;
+    color: #ffffff !important;
+    display: block;
+    font-size: 18px !important;
+    height: 38px !important;
+    line-height: 0 !important;
+    margin: 55px auto 5px !important;
+    text-align: center;
+    text-transform: capitalize !important;
+    width: 175px !important;}
+.mc4wp-form-fields input, #Appraisal input, #Appraisal textarea{border-color: -moz-use-text-color -moz-use-text-color #a8a4a3;
+    border-style: none none solid;
+    border-width: 0 0 1px;
+    font-family: "Montserrat",sans-serif;
+    font-weight: 300;
+    height: 40px;
+    line-height: 40px;
+    margin: 20px 0 0;
+    padding: 0;
+    width: 100%;}
+#Appraisal textarea{resize: none; height: 120px;}
+#Appraisal .send_button_form{ background: #fd5e0f none repeat scroll 0 0 !important;
+    border-radius: 30px !important;
+    color: #ffffff !important;
+    display: block;
+    font-size: 18px !important;
+    height: 38px !important;
+    line-height: 0 !important;
+    margin: 55px auto 5px !important;
+    text-align: center;
+    text-transform: capitalize !important;
+    width: 175px !important;
+float: none !important;
+}
+#Appraisal .modal-footer{padding: 0;}
+
+.wpcf7-form-control.wpcf7-text.wpcf7-validates-as-required.wpcf7-not-valid {
+    border-bottom: 1px solid #ff0000 !important;
+}
+span.wpcf7-not-valid-tip{display: none;}
+div.wpcf7-validation-errors {
+    border: medium none;
+}
+div.wpcf7-response-output {
+    color: #ff0000;
+    margin: 0;
+    padding: 0;
+    text-align: center;
+}
+.ajax-loader {
+    display: block;
+    margin: auto !important;
+    width: 16px;
+}
                     /********************************************MEDIA QUERY STARTS HERE*************************************************/
                     
                     @media (min-width: 1500px) {
@@ -3853,13 +4028,13 @@
                             width: 280px;
                         }
                         .full-box .box1 h3 {
-                            font-size: 45px;
+                            font-size: 38px;
                         }
                         .full-box .box1 h2 {
-                            font-size: 85px;
+                            font-size: 80px;
                         }
                         .full-box .box1 h4 {
-                            font-size: 35px;
+                            font-size: 30px;
                         }
                         .all_detail ul li {
                             margin: 0 22px 0 0;

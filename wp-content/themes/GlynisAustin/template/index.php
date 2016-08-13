@@ -35,7 +35,7 @@ get_header();
                 <div class="row">
                     <div class="col-md-10 col-md-offset-1">
                         <h2 class="pull-left">why choose glynis austin properties?</h2>
-                        <a href="<?php echo get_field('why_choose',6); ?>" class="pull-right">click here <i class="fa fa-long-arrow-right" aria-hidden="true"></i></a>
+                        <a href="<?php echo get_field('why_choose',6); ?>" target="_black" class="pull-right">click here <i class="fa fa-long-arrow-right" aria-hidden="true"></i></a>
                     </div>
                 </div>
             </div>
@@ -47,7 +47,7 @@ get_header();
                 <div class="col-md-6 pull-right">
                     <h2>About Us</h2>
                     <p><?php echo get_field('about_us_content',6);?></p>
-                    <a href="#">find out  more <i class="fa fa-long-arrow-right" aria-hidden="true"></i></a>
+                    <a href="<?php echo get_site_url(); ?>/about">find out  more <i class="fa fa-long-arrow-right" aria-hidden="true"></i></a>
                 </div>
                 <div class="col-md-6 pull-left">
 					<?php	$image=get_post_meta(6,"about_us_image",true);
@@ -99,6 +99,22 @@ get_header();
             </div>
         </div>
     </section>
+	<script>
+        jQuery('.client_say_section').ready(function () {
+            jQuery("#testimonial").owlCarousel({
+
+                autoPlay: 5000, //Set AutoPlay to 3 seconds
+                navigation: true,
+                navigationText: ["", ""],
+                items: 1,
+                itemsDesktop: [1199, 1],
+                itemsDesktopSmall: [979, 1],
+                itemsTablet: [768, 1],
+                itemsMobile: [479, 1]
+
+            });
+        });
+    </script>
     <section class="property_week">
         <div class="container">
             <h2 class="title">This Week In Property</h2>
@@ -136,7 +152,30 @@ get_header();
 						$slug = $category->slug;
 						$name = $category->name;?>
                     <div role="tabpanel" class="tab-pane <?php if($a==1){ echo 'active'; }?>" id="<?php echo $slug; ?>">
-					<div class="full-box">
+					<div class="full-box"><?php  
+					if($slug == 'off_market_home'){?>
+						<div class="offmarket-img">
+							<img src="<?php echo esc_url(get_template_directory_uri());?>/images/offmarket.jpg" alt="">
+						</div> 
+						<script>
+							jQuery( ".offmarket-img" ).click(function(){
+								<?php if ( is_user_logged_in() ) { ?> 
+								
+									//alert('aaaaa');
+									window.location="http://glynisaustin.stagingdevsite.com/dev/property-category/off_market_home/"; 
+								 <?php } else { 
+									?>
+									jQuery('#registerModal').modal()                      
+									jQuery('#registerModal').modal({ keyboard: false })   
+									jQuery('#registerModal').modal('show')   
+									<?php
+								 } 
+								 ?>
+							});
+						</script>
+					<?php  }
+					else 
+					{?>
                         <div id="open">
 						<?php for( $i=0; $i<7; $i++) 
 						{ $day = date('l',time()+86400*$i); 
@@ -148,8 +187,10 @@ get_header();
                                                 <h2><?php echo date('j',time()+86400*$i); ?></h2>
                                                 <h4><?php echo date('F',time()+86400*$i); ?></h4>
                                             </a>
-									</div> 
-								  <?php }
+										</div> 
+										
+								  <?php  }
+								 
 									$posts=get_posts(array(
 									   'showposts' => -1,
 									   'post_type' => 'property',
@@ -169,10 +210,10 @@ get_header();
 											$days = get_field('days_for_visit',$post1->ID); 
 											$no =count($days);
 											
-											if($no == 1)
+											if(gettype($days) == 'string')
 											{
+												
 											if($day == get_field('days_for_visit',$post->ID)){
-											
 											?>
 											  <div class="item">
 													<a href="<?php the_permalink(); ?>" class="box2">
@@ -210,7 +251,9 @@ get_header();
 													</a>
 											   </div>
 											<?php  
-											} } else{ ?>
+											} } else{ 
+												for($j=0;$j<$no;$j++){
+												if($day == $days[$j]){?>
 													<div class="item">
 													<a href="<?php the_permalink(); ?>" class="box2">
 														<div class="list_img">
@@ -227,7 +270,7 @@ get_header();
 															<div class="pad">
 																<h2><?php the_title(); ?></h2>
 																<h5><?php echo get_field('sub_title',$post->ID); ?></h5>
-																<p><?php echo $day; ?> <?php echo date(' j, F',time()+86400*$i); ?></p>
+																<p><?php echo $days[$j]; ?> <?php echo date(' j, F',time()+86400*$i); ?></p>
 																<p><?php echo get_field('time_for_visit',$post->ID); ?></p>
 															</div>
 															<div class="all_detail">
@@ -247,10 +290,11 @@ get_header();
 													</a>
 											   </div>
 
-								<?php }
+											<?php } } }
 									$z++;}
 						} } ?>
 								</div>
+				<?php } ?>
 						</div>
                         <a class="view_all_btn" href="<?php echo get_category_link( $category->term_id )?>">view all <?php if($slug == 'open_times'){ echo "open times";} if($slug == 'new_listing'){ echo "listing";} if($slug == 'off_market_home'){ echo "off market";} if($slug == 'recent_sales'){ echo "sales";} if($slug == 'upcoming_auction'){ echo "upcoming auction";}?> <i class="fa fa-long-arrow-right" aria-hidden="true"></i></a>
                     </div>
@@ -258,6 +302,7 @@ get_header();
             </div>
 
         </div>
+		</div>
     </section>
     <section class="slider_prop">
         <div id="carousel-example-generic" class="carousel slide" data-ride="carousel">
@@ -282,7 +327,7 @@ get_header();
 						<?php $id = get_field('community',$post->ID); 
 							$term = get_term( $id ,'property-category' );						?>
                             <h2><?php the_title(); ?><?php echo " , ". $term->name; ?></h2>
-                            <a href="#">View Property</a>
+                            <a href="<?php the_permalink(); ?>">View Property</a>
                         </div>
                     </div>
                 </div>

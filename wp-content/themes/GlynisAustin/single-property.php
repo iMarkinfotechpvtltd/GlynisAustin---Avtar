@@ -100,13 +100,13 @@ $cata_name = $name1[0];?>
                                 BODY CORPORATE -
                             </div>
                             <div class="rgt_div">
-                                Lorem Ipsum
+                                <?php echo get_field('body_corporate',$post->ID); ?>
                             </div>
                             <div class="lft_div">
                                 RENTAL APPRAISAL -
                             </div>
                             <div class="rgt_div">
-                                Lorem Ipsum
+                                <?php echo get_field('rental_appraisal',$post->ID); ?>
                             </div>
                         </div>
                     </div>
@@ -182,24 +182,36 @@ $cata_name = $name1[0];?>
                         <ul class="dwnld_cntnt">
                             <li>
 							<?php $contact = get_field('contact_file',$post->ID); ?>
-                                <a class="abc" href="<?php echo $contact['url']; ?>" target="_black">contact</a>
+                                <!--<a href="#" onclick="download(<?php echo $contact['url']; ?>);" > -->
+								<a href="javascript:void(0);" onclick="filedownload('<?php echo $contact['url']; ?>');">contact</a>
                             </li>
                             <li>
 							<?php  $map = get_field('map_file',$post->ID); ?>
-                                <a class="abc" href="<?php echo $map['url']; ?>" target="_black">map</a>
+                                <a href="javascript:void(0);" onclick="filedownload('<?php echo $map['url']; ?>');" >map</a>
                             </li>
                             <li>
 							<?php $broc = get_field('brochure',$post->ID); ?>
-                                <a class="abc" href="<?php echo $broc['url']; ?>" target="_black">brochure</a>
+                                <a href="javascript:void(0);" onclick="filedownload('<?php echo $broc['url']; ?>');" >brochure</a>
                             </li>
                             <li>
 							<?php $plan = get_field('floor_plan',$post->ID); ?>
-                                <a class="abc" href="<?php echo $plan['url']; ?>" target="_black">floor plan</a>
-                            </li>
-                           
-							
-							
+                                <a href="javascript:void(0);" onclick="filedownload('<?php echo $plan['url']; ?>');" >floor plan</a>
+                            </li>	
                         </ul>
+						<script>
+						function filedownload(id) {
+							<?php if ( is_user_logged_in() ) { ?> 
+							window.open(id,'_blank');
+							//alert(id);
+							<?php } else { 
+								?>
+								jQuery('#loginModal').modal()                      
+								jQuery('#loginModal').modal({ keyboard: false })   
+								jQuery('#loginModal').modal('show')   
+								<?php
+							 } ?>
+						}
+						</script>
                         <div class="share_connect">
                             <h3>share</h3>
                             <ul>
@@ -222,6 +234,7 @@ $cata_name = $name1[0];?>
                 </div>
             </div>
         </div>
+		</div>
 		<?php $id = get_field('assosiatewith',$post_ID); 
 						$member = get_post($id); 
 						?>
@@ -367,11 +380,3 @@ $cata_name = $name1[0];?>
     </section>
       
 <?php get_footer(); ?>
-<script>
-jQuery( ".abc" ).click(function() {
-  alert( "hello" );
-});
-</script>
-<pre>
-<?php print_r($member); ?>
-</pre>

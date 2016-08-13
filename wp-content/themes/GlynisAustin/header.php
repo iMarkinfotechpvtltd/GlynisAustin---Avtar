@@ -18,6 +18,7 @@
     <link href="<?php echo esc_url(get_template_directory_uri());?>/css/style.css" rel="stylesheet">
     <link href="<?php echo esc_url(get_template_directory_uri());?>/css/owl.carousel.css" rel="stylesheet">
     <link href="<?php echo esc_url(get_template_directory_uri());?>/css/owl.theme.css" rel="stylesheet">
+	 <link rel="stylesheet" href="https://ajax.googleapis.com/ajax/libs/jqueryui/1.11.2/themes/smoothness/jquery-ui.css">
 	
 	<!-- Fancybox CSS -->
      <link rel="stylesheet" href="<?php echo esc_url(get_template_directory_uri());?>/css/jquery.fancybox-buttons.css">
@@ -48,49 +49,61 @@
             <div class="left_part pull-left">
                 <ul>
                     <li>
-                        <a href="#">SUBSCRIBE TO GLYNIS AUSTIN PROPERTIES ALERTS</a>
+                        <a href="javascript:void(0)" data-target="#news-letter" data-toggle="modal">SUBSCRIBE TO GLYNIS AUSTIN PROPERTIES ALERTS</a>
                     </li>
                     <li>
                         <a href="<?php echo get_site_url(); ?>/career"> CAREERS</a>
                     </li>
                     <li>
-                        <a href="tel:0403333013">CALL 0403 333 013</a>
+				    <?php $no = get_field('phone_no',397); 
+					$no = str_replace(' ', '', $no); ?>
+                        <a href="tel:<?php echo $no; ?>">CALL <?php echo get_field('phone_no',397); ?></a>
                     </li>
                 </ul>
             </div>
             <div class="right_part pull-right">
                 <ul>
                     <li>
-                        <a href="#"><i class="fa fa-facebook" aria-hidden="true"></i></a>
+                        <a href="<?php echo get_field('social_link_facebook',397); ?>" target="_blank"><i class="fa fa-facebook" aria-hidden="true"></i></a>
 
                     </li>
                     <li>
-                        <a href="#"><i class="fa fa-instagram" aria-hidden="true"></i></a>
+                        <a href="<?php echo get_field('social_link_instagram',397); ?>" target="_blank"><i class="fa fa-instagram" aria-hidden="true"></i></a>
                     </li>
 
                     <li>
-                        <a href="#"><i class="fa fa-twitter" aria-hidden="true"></i></a>
+                        <a href="<?php echo get_field('social_link_twitter',397); ?>" target="_blank"><i class="fa fa-twitter" aria-hidden="true"></i></a>
                     </li>
                     <li>
-                        <a href="#"><i class="fa fa-linkedin" aria-hidden="true"></i></a>
+                        <a href="<?php echo get_field('social_link_linkedin',397); ?>" target="_blank"><i class="fa fa-linkedin" aria-hidden="true"></i></a>
                     </li>
                     <li>
-                        <a href="#"><i class="fa fa-youtube" aria-hidden="true"></i></a>
+                        <a href="<?php echo get_field('social_link_youtube',397); ?>" target="_blank"><i class="fa fa-youtube" aria-hidden="true"></i></a>
                     </li>
                     <li>
-                        <a href="#"><i class="fa fa-pinterest-p" aria-hidden="true"></i></a>
+                        <a href="<?php echo get_field('social_link_pinterest',397); ?>" target="_blank"><i class="fa fa-pinterest-p" aria-hidden="true"></i></a>
                     </li>
                 </ul>
             </div>
         </div>
     </section>
+	<?php function checkuser(){
+				if ( is_user_logged_in() ) {?>
+					<script> jQuery( "#menu-item-323" ).hide(); </script>
+				<?php } else { ?>
+					<script> jQuery( "#menu-item-335" ).hide(); </script>
+				<?php }
+			}?>
+			
     <header>
         <div class="container">
             <nav class="navbar navbar-default main_menu">
                 <!-- Brand and toggle get grouped for better mobile display -->
                 <div class="navbar-header">
-
-                    <a class="navbar-brand pull-left logo" href="<?php echo get_site_url(); ?>"><img src="<?php echo esc_url(get_template_directory_uri());?>/images/logo.png"></a>
+								<?php	$image=get_post_meta(397,"header_logo",true);
+								$thumb = wp_get_attachment_image_src($image, 'full' );
+								?>
+                    <a class="navbar-brand pull-left logo" href="<?php echo get_site_url(); ?>"><img src="<?php echo $url = $thumb['0'];?>"></a>
                 </div>
 
                 <!-- Collect the nav links, forms, and other content for toggling -->
@@ -127,16 +140,11 @@
 		jQuery( "#menu-item-324" ).attr( 'data-toggle','modal' );
 		jQuery( "#menu-item-323" ).attr( 'data-target','#loginModal' );
 		jQuery( "#menu-item-323" ).attr( 'data-toggle','modal' );
+		jQuery( "#menu-item-343" ).attr( 'data-target','#news-letter' );
+		jQuery( "#menu-item-343" ).attr( 'data-toggle','modal' );
 		jQuery( "#menu-item-335 a" ).attr('href','<?php echo wp_logout_url( home_url() ); ?>');
 		</script>
-		<?php
-		if ( is_user_logged_in() ) {?>
-			<script> jQuery( "#menu-item-323" ).hide(); </script>
-		<?php } else { ?>
-			<script> jQuery( "#menu-item-335" ).hide(); </script>
-		<?php }
-		?>
-
+		<?php checkuser();?>
                     <div class="search">
                         <form action="" class="search-form" method="get" role="search">
                             <input type="text" name="s" placeholder="Type here..">

@@ -898,6 +898,23 @@ function my_acf_load_field3( $field )
 add_filter('acf/load_field/name=select_category', 'my_acf_load_field3');
 
 
+/********** Load post type for community post  *********************/
+
+function my_acf_load_field5( $field )
+{
+
+	$field['choices']= array(
+	
+		'Why live in this community' => 'WHY LIVE IN THIS COMMUNITY',
+		'Best of community' => 'BEST OF COMMUNITY'
+	);
+
+    return $field;
+}
+
+add_filter('acf/load_field/name=post_relate_with', 'my_acf_load_field5');
+
+
 /********** Load taxonomy for Buyer guide  *********************/
 
 function my_acf_load_field4( $field )

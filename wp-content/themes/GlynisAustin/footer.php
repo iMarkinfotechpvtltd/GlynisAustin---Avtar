@@ -4,23 +4,36 @@
                 <div class="row">
                     <div class="col-md-3">
                         <div class="block1">
-                            <a class="footer_logo" href="<?php echo get_site_url(); ?>"><img src="<?php echo esc_url(get_template_directory_uri());?>/images/footer_logo.png"></a>
+						<?php	$image=get_post_meta(397,"footer_logo",true);
+								$thumb = wp_get_attachment_image_src($image, 'full' );
+								?>
+                            <a class="footer_logo" href="<?php echo get_site_url(); ?>"><img src="<?php echo $url = $thumb['0'];?>"></a>
                             <ul>
-                                <li>
-                                    <a href="<?php echo get_site_url(); ?>/about">About</a>
-                                </li>
-                                <li>
-                                    <a href="<?php echo get_site_url(); ?>/team">Team </a>
-                                </li>
-                                <li>
-                                    <a href="<?php echo get_site_url(); ?>/career">Careers</a>
-                                </li>
-                                <li>
-                                    <a href="<?php echo get_site_url(); ?>/contact">Contact</a>
-                                </li>
-                                <li>
-                                    <a href="#">Subscribe</a>
-                                </li>
+                                <?php
+								$defaults = array(
+								'theme_location'  => '',
+								'menu'            => 'footer_left',
+								'container'       => '',
+								'container_class' => '',
+								'container_id'    => '',
+								'menu_class'      => 'menu',
+								'menu_id'         => '',
+								'echo'            => true,
+								'fallback_cb'     => 'wp_page_menu',
+								'before'          => '',
+								'after'           => '',
+								'link_before'     => '',
+								'link_after'      => '',
+								'items_wrap'      => '%3$s',
+								'depth'           => 0,
+								'walker'          => ''
+								);
+								wp_nav_menu( $defaults );
+							?>
+							<script> 
+							jQuery( "#menu-item-382" ).attr( 'data-target','#news-letter' );
+							jQuery( "#menu-item-382" ).attr( 'data-toggle','modal' );
+							</script>
                             </ul>
                         </div>
                     </div>
@@ -28,21 +41,27 @@
                         <div class="block2">
                             <h2>PROPERTIES</h2>
                             <ul>
-                                <li>
-                                    <a href="#">For Sale</a>
-                                </li>
-                                <li>
-                                    <a href="#">Open Homes </a>
-                                </li>
-                                <li>
-                                    <a href="#">Auctions</a>
-                                </li>
-                                <li>
-                                    <a href="#">Recently Sold</a>
-                                </li>
-                                <li>
-                                    <a href="#">Off Market</a>
-                                </li>
+                                <?php
+								$defaults = array(
+								'theme_location'  => '',
+								'menu'            => 'property_menu',
+								'container'       => '',
+								'container_class' => '',
+								'container_id'    => '',
+								'menu_class'      => 'menu',
+								'menu_id'         => '',
+								'echo'            => true,
+								'fallback_cb'     => 'wp_page_menu',
+								'before'          => '',
+								'after'           => '',
+								'link_before'     => '',
+								'link_after'      => '',
+								'items_wrap'      => '%3$s',
+								'depth'           => 0,
+								'walker'          => ''
+								);
+								wp_nav_menu( $defaults );
+							?>
                             </ul>
                         </div>
                     </div>
@@ -50,18 +69,27 @@
                         <div class="block3">
                             <h2>NEWS</h2>
                             <ul>
-                                <li>
-                                    <a href="<?php echo get_site_url(); ?>/local-news">Latest News</a>
-                                </li>
-                                <li>
-                                    <a href="sellers-guide.html">Seller Guides</a>
-                                </li>
-                                <li>
-                                    <a href="#">Buyer guides</a>
-                                </li>
-                                <li>
-                                    <a href="<?php echo get_site_url(); ?>/testimonial">our Clients Say</a>
-                                </li>
+                                <?php
+								$defaults = array(
+								'theme_location'  => '',
+								'menu'            => 'news_menu',
+								'container'       => '',
+								'container_class' => '',
+								'container_id'    => '',
+								'menu_class'      => 'menu',
+								'menu_id'         => '',
+								'echo'            => true,
+								'fallback_cb'     => 'wp_page_menu',
+								'before'          => '',
+								'after'           => '',
+								'link_before'     => '',
+								'link_after'      => '',
+								'items_wrap'      => '%3$s',
+								'depth'           => 0,
+								'walker'          => ''
+								);
+								wp_nav_menu( $defaults );
+							?> 
                             </ul>
                         </div>
                     </div>
@@ -69,21 +97,27 @@
                         <div class="block4">
                             <h2>COMMUNITIES</h2>
                             <ul>
-                                <li>
-                                    <a href="#">Paddington</a>
-                                </li>
-                                <li>
-                                    <a href="#">Red Hill</a>
-                                </li>
-                                <li>
-                                    <a href="#">Bardon</a>
-                                </li>
-                                <li>
-                                    <a href="#">Auchenflower</a>
-                                </li>
-                                <li>
-                                    <a href="#">Petrie Terrace</a>
-                                </li>
+                            <?php
+								$defaults = array(
+								'theme_location'  => '',
+								'menu'            => 'community_menu',
+								'container'       => '',
+								'container_class' => '',
+								'container_id'    => '',
+								'menu_class'      => 'menu',
+								'menu_id'         => '',
+								'echo'            => true,
+								'fallback_cb'     => 'wp_page_menu',
+								'before'          => '',
+								'after'           => '',
+								'link_before'     => '',
+								'link_after'      => '',
+								'items_wrap'      => '%3$s',
+								'depth'           => 0,
+								'walker'          => ''
+								);
+								wp_nav_menu( $defaults );
+							?> 
                             </ul>
                         </div>
                     </div>
@@ -94,23 +128,15 @@
             <div class="container">
                 <h2>proudly in conjuction with</h2>
                 <ul>
-                    <li>
-                        <a href="http://raywhitepaddington.com.au/" target="_blank"><img src="<?php echo esc_url(get_template_directory_uri());?>/images/proud_icon1.jpg"></a>
-                    </li>
-                    <li>
-                        <a href="http://www.reiq.com/" target="_blank"><img src="<?php echo esc_url(get_template_directory_uri());?>/images/proud_icon2.jpg"></a>
-                    </li>
-                    <li>
-                        <a href="http://raywhite.com/" target="_blank"><img src="<?php echo esc_url(get_template_directory_uri());?>/images/proud_icon3.jpg"></a>
-                    </li>
+                    <?php echo get_field('conjunction_with',397); ?>
                 </ul>
             </div>
         </div>
         <div class="copyright">
             <ul>
-                <li>Copyright © Glynis Austin Properties - All Rights Reserved </li>
+                <li><?php echo get_field('copyright',397); ?></li>
                 <li>
-                    <a href="#">privacy</a>
+                    <a href="<?php echo get_site_url(); ?>/privacy">privacy</a>
                 </li>
                 <li>
                     <a href="#">site map</a>
@@ -133,7 +159,7 @@
                     <p>You need to sign in or sign up before continuing.</p>
                     <div class="form-area">
                         <input type="text" id="username" name="username" placeholder="Email">
-                        <input type="text" id="user_pass" name="user_pass" placeholder="Password">
+                        <input type="password" id="user_pass" name="user_pass" placeholder="Password">
 						 <input type="hidden" name="action" value="wpLoginForm" />
 							<?php wp_nonce_field( 'wpLoginForm_html', 'wpLoginForm_nonce' ); ?>
                         <a href="#" class="frgt_pwd">Forgot password?</a>
@@ -331,7 +357,28 @@ jQuery(function($) {
          <?php echo do_shortcode('[contact-form-7 id="59" title="get in touch"]'); ?>
       </div>
       <div class="modal-footer">
-        <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+        
+      </div>
+    </div>
+
+  </div>
+</div>
+
+<!-- Book an news-letter Model -->		
+<div id="news-letter" class="modal fade" role="dialog">
+  <div class="modal-dialog">
+
+    <!-- Modal content-->
+    <div class="modal-content">
+      <div class="modal-header">
+        <button type="button" class="close" data-dismiss="modal">&times;</button>
+        <h4 class="modal-title">Subscribe Our News Letter</h4>
+      </div>
+      <div class="modal-body">
+         <?php echo do_shortcode('[mc4wp_form id="341"]'); ?>
+      </div>
+      <div class="modal-footer">
+       
       </div>
     </div>
 
@@ -349,33 +396,39 @@ jQuery(function($) {
     <script src="<?php echo esc_url(get_template_directory_uri());?>/js/wow.min.js"></script>
   <script src="<?php echo esc_url(get_template_directory_uri());?>/js/custom_ie.js"></script>
     <script src="<?php echo esc_url(get_template_directory_uri());?>/js/main.js"></script>
+	<script src="<?php echo esc_url(get_template_directory_uri());?>/js/jquery.BlackAndWhite.js"></script>
+	<script src="<?php echo esc_url(get_template_directory_uri());?>/js/uisearch.js"></script>
+	<script src="https://ajax.googleapis.com/ajax/libs/jqueryui/1.11.2/jquery-ui.min.js"></script>
+	<script src="<?php echo esc_url(get_template_directory_uri());?>/js/classie.js"></script>
+    <script src="<?php echo esc_url(get_template_directory_uri());?>/js/modernizr.custom.js"></script>
+
 	<script type="text/javascript" src="<?php echo esc_url(get_template_directory_uri()); ?>/js/jquery.validate.js"></script>
 <script type="text/javascript" src="<?php echo esc_url(get_template_directory_uri()); ?>/js/form.js"></script>
 	
 	<?php wp_footer(); ?>
+	<script>
+        jQuery(function () {
+            jQuery('[data-toggle="tooltip"]').tooltip({
+                trigger: 'manual'
+            }).tooltip('show');
+        });
+
+         jQuery( window ).scroll(function() {   
+         if(jQuery( window ).scrollTop() > 10){  // scroll down abit and get the action   
+        jQuery(".progress-bar").each(function () {
+            each_bar_width = jQuery(this).attr('aria-valuenow');
+            jQuery(this).width(each_bar_width + '%');
+        });
+
+         }  
+        });
+    </script>
     <script>
         jQuery('.carousel').carousel({
             pause: 'none'
         });
     </script>
-    <script>
-        jQuery(document).ready(function () {
-
-            jQuery("#testimonial").owlCarousel({
-
-                autoPlay: 5000, //Set AutoPlay to 3 seconds
-                navigation: true,
-                navigationText: ["", ""],
-                items: 1,
-                itemsDesktop: [1199, 1],
-                itemsDesktopSmall: [979, 1],
-                itemsTablet: [768, 1],
-                itemsMobile: [479, 1]
-
-            });
-
-        });
-    </script>
+    
 	 <script>
         jQuery(document).ready(function () {
 
@@ -477,6 +530,62 @@ jQuery(function($) {
 
         });
     </script>
+<script>
+        function collision($div1, $div2) {
+            var x1 = $div1.offset().left;
+            var w1 = 40;
+            var r1 = x1 + w1;
+            var x2 = $div2.offset().left;
+            var w2 = 40;
+            var r2 = x2 + w2;
+
+            if (r1 < x2 || x1 > r2) return false;
+            return true;
+
+        }
+
+        // // slider call
+
+        $('#slider').slider({
+            range: true,
+            min: 50,
+            max: 500,
+            values: [0, 500],
+            slide: function (event, ui) {
+
+                $('.ui-slider-handle:eq(0) .price-range-min').html('$' + ui.values[0] + 'K');
+                $('.ui-slider-handle:eq(1) .price-range-max').html('$' + ui.values[1] + 'K');
+                $('.price-range-both').html('<i>$' + ui.values[0] + 'K' + ' - </i>$' + ui.values[1] + 'K');
+
+                //
+
+                if (ui.values[0] == ui.values[1]) {
+                    $('.price-range-both i').css('display', 'none');
+                } else {
+                    $('.price-range-both i').css('display', 'inline');
+                }
+
+                //
+
+                if (collision($('.price-range-min'), $('.price-range-max')) == true) {
+                    $('.price-range-min, .price-range-max').css('opacity', '0');
+                    $('.price-range-both').css('display', 'block');
+                } else {
+                    $('.price-range-min, .price-range-max').css('opacity', '1');
+                    $('.price-range-both').css('display', 'none');
+                }
+
+            }
+        });
+
+        $('.ui-slider-range').append('<span class="price-range-both value"><i>$' + $('#slider').slider('values', 0) + 'K' + ' - </i>' + $('#slider').slider('values', 1) + '</span>');
+
+        $('.ui-slider-handle:eq(0)').append('<span class="price-range-min value">$' + $('#slider').slider('values', 0) + 'K' + '</span>');
+
+        $('.ui-slider-handle:eq(1)').append('<span class="price-range-max value">$' + $('#slider').slider('values', 1) + 'K' + '</span>');
+    </script>
+	
+	
 	 <script>
         jQuery(function () {
             jQuery('[data-toggle="tooltip"]').tooltip()
