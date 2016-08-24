@@ -22,7 +22,7 @@ $thumb = wp_get_attachment_image_src($image, 'full' );
                 <div class="in_right_sec">
                     <div class="cv_box">
                         <?php echo get_field('send_resume',63); ?>
-						<a href="mailto: saler@glynisaustin.com">saler@glynisaustin.com</a>
+						<a href="mailto: <?php echo get_field('email',63); ?>"><?php echo get_field('email',63); ?></a>
                     </div>
                 </div>
             </div>

@@ -16,12 +16,12 @@ $thumb = wp_get_attachment_image_src($image, 'full' );
         </div>
 		<?php 
 		$items=array();
-		$items = get_field('select_category_buyer',328); 
+		$items = get_field('buyer_category',328); 
 		$no =count($items); 
 		if($no == 1){ ?>
         <div class="expect_div marketing_div">
             <div class="container">
-                <h2 class="title"><?php $term = get_term( $items ); echo $term->name; ?></h2>
+                <h2 class="title"><?php $term = get_term( $items[0] ); echo $term->name; ?></h2>
 				<?php $posts=get_posts(array(
 					   'showposts' => -1,
 					   'post_type' => 'buyer-guide',
@@ -38,15 +38,12 @@ $thumb = wp_get_attachment_image_src($image, 'full' );
 					{ ?>
                     <div class="col-md-3">
                         <div class="box20">
-                            <a class="various fancybox.iframe" title="The Falltape" href="<?php echo get_field('video_source',$post->ID); ?>">
-                                <img src="<?php echo esc_url(get_template_directory_uri());?>/images/news_img1.jpg">
-                                <div class="view_hover_effect">
-                                    <img src="<?php echo esc_url(get_template_directory_uri());?>/images/pause_icon.png">
-                                </div>
+                            <a class="various fancybox.iframe" title="<?php echo get_the_title(); ?>" href="<?php echo get_field('video_source',$post->ID); ?>">
+                                <?php the_post_thumbnail('small'); ?>    
                             </a>
                             <div class="n_inner">
                                 <a href="#" class="h_title"><?php the_title(); ?></a>
-                                <p><?php the_content(); ?></p>
+                                <p><?php echo $post->post_content;; ?></p>
                             </div>
                         </div>
                     </div>

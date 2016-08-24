@@ -16,37 +16,39 @@ print_r($mempost);
 echo '</pre>'; */
 
 ?>
- <section class="banner inner_banner1" style="">
+    <section class="banner inner_banner1 single_member" style="">
         <div class="container">
             <div class="full_div">
                 <div class="row">
-                    <div class="col-md-6">
+                    <div class="col-md-6 col-sm-6">
                         <div class="men">
-						<?php $newpost = $post->ID;
+                            <?php $newpost = $post->ID;
 							 $image_attributes = wp_get_attachment_image_src(get_post_thumbnail_id( $newpost ),'news_image' );
 								$url = $image_attributes[0];
 						?>
-                            <img src="<?php echo $url; ?>">
+                                <img src="<?php echo $url; ?>">
                         </div>
                     </div>
-                    <div class="col-md-6">
+                    <div class="col-md-6 col-sm-6">
                         <div class="connect_info_detail">
                             <h2><?php the_title(); $pid = get_the_id(); ?></h2>
-                           <?php while (have_posts()) : the_post();?>
-							<p><?php the_content(); ?></p>
-							<?php endwhile; ?>
-                            <div class="conct_i">
-                                <div class="ic">
-                                    <i class="fa fa-envelope" aria-hidden="true"></i>
-                                </div>
-                                <p><span>Email: </span><a href="mailto:<?php echo get_field('email',$post->ID); ?>"><?php echo get_field('email',$post->ID); ?></a></p>
-                            </div>
-                            <div class="conct_i">
-                                <div class="ic">
-                                    <i class="fa fa-phone" aria-hidden="true"></i>
-                                </div>
-                                <p><span>Phone: </span><a href="tel:<?php echo get_field('phone_number',$post->ID); ?>"><?php echo get_field('phone_number',$post->ID); ?></a></p>
-                            </div>
+                            <?php while (have_posts()) : the_post();?>
+                                <p>
+                                    <?php the_content(); ?>
+                                </p>
+                                <?php endwhile; ?>
+                                    <div class="conct_i">
+                                        <div class="ic">
+                                            <i class="fa fa-envelope" aria-hidden="true"></i>
+                                        </div>
+                                        <p><span>Email: </span><a href="mailto:<?php echo get_field('email',$post->ID); ?>"><?php echo get_field('email',$post->ID); ?></a></p>
+                                    </div>
+                                    <div class="conct_i">
+                                        <div class="ic">
+                                            <i class="fa fa-phone" aria-hidden="true"></i>
+                                        </div>
+                                        <p><span>Phone: </span><a href="tel:<?php echo get_field('phone_number',$post->ID); ?>"><?php echo get_field('phone_number',$post->ID); ?></a></p>
+                                    </div>
                         </div>
                     </div>
 
@@ -72,11 +74,11 @@ echo '</pre>'; */
                     </ul>
                 </div>
             </div>
-       <section class="property_week">
-        <div class="container">
-            <div class="property_tab">
-                <div class="tab-content">
-					<?php 
+            <section class="property_week">
+                <div class="container">
+                    <div class="property_tab">
+                        <div class="tab-content">
+                            <?php 
 					$args = array(
 						'type'                     => 'property',
 						'orderby'                  => 'term_id',
@@ -89,10 +91,10 @@ echo '</pre>'; */
 						$name = $category->name;
 						$termid = $category->term_id;
 					if(($slug == 'open_times') || ($slug == 'recent_sales')){?>
-                    <div role="tabpanel" class="tab-pane <?php if($a==1){ echo 'active'; }?>" id="<?php echo $slug; ?>">
-					<div class="full-box">
-                        <div class="row">
-						<?php for( $i=0; $i<7; $i++) 
+                                <div role="tabpanel" class="tab-pane <?php if($a==1){ echo 'active'; }?>" id="<?php echo $slug; ?>">
+                                    <div class="full-box">
+                                        <div class="row">
+                                            <?php for( $i=0; $i<7; $i++) 
 						{ $day = date('l',time()+86400*$i); 
 						if(($day == "Wednesday") || ($day == "Thursday") || ($day == "Saturday")) {
 									if($slug == 'open_times'){
@@ -150,100 +152,119 @@ echo '</pre>'; */
 											{
 												
 												if($day == get_field('days_for_visit',$post->ID)){
-												?>  <div class="col-md-3">
-													<a href="<?php the_permalink(); ?>" class="box2">
-														<div class="list_img">
-														<?php $newpost = $post->ID;
+												?>
+                                                <div class="col-md-3 col-sm-3">
+                                                    <a href="<?php the_permalink(); ?>" class="box2">
+                                                        <div class="list_img">
+                                                            <?php $newpost = $post->ID;
 														 $image_attributes = wp_get_attachment_image_src(get_post_thumbnail_id( $newpost ),'news_tile' );
 															$url = $image_attributes[0];
 															?>
-															<img src="<?php echo $url; ?>">
-															<?php if($slug == 'recent_sales'){
+                                                                <img src="<?php echo $url; ?>">
+                                                                <?php if($slug == 'recent_sales'){
 																echo '<h2 class="sold">SOLD</h2>';
 															} ?>
-														</div>
-														<div class="inner_box">
-															<div class="pad">
-																<h2><?php the_title(); ?></h2>
-																<h5><?php echo get_field('sub_title',$post->ID); ?></h5>
-																<p><?php echo get_field('days_for_visit',$post->ID); ?> <?php echo date(' j, F',time()+86400*$i); ?></p>
-																<p><?php echo get_field('time_for_visit',$post->ID); ?></p>
-															</div>
-															<div class="all_detail">
-																<div class="pad">
-																	<ul>
-																		<li><?php echo get_field('number_of_bedroom',$post->ID); ?><i class="fa fa-bed" aria-hidden="true"></i></li>
-																		<li><?php echo get_field('number_of_washroom',$post->ID); ?><img src="<?php echo esc_url(get_template_directory_uri());?>/images/bath_icon.png"></li>
-																		<li><?php echo get_field('parking_capacity',$post->ID); ?><i class="fa fa-car" aria-hidden="true"></i></li>
-																	</ul>
-																	<div class="price">
-																		<label>price :</label><?php if($slug != 'upcoming_auction'){ echo get_field('property_price',$post->ID);} else
+                                                        </div>
+                                                        <div class="inner_box">
+                                                            <div class="pad">
+                                                                <h2><?php the_title(); ?></h2>
+                                                                <h5><?php echo get_field('sub_title',$post->ID); ?></h5>
+                                                                <p>
+                                                                    <?php echo get_field('days_for_visit',$post->ID); ?>
+                                                                        <?php echo date(' j, F',time()+86400*$i); ?>
+                                                                </p>
+                                                                <p>
+                                                                    <?php echo get_field('time_for_visit',$post->ID); ?>
+                                                                </p>
+                                                            </div>
+                                                            <div class="all_detail">
+                                                                <div class="pad">
+                                                                    <ul>
+                                                                        <li>
+                                                                            <?php echo get_field('number_of_bedroom',$post->ID); ?><i class="fa fa-bed" aria-hidden="true"></i></li>
+                                                                        <li>
+                                                                            <?php echo get_field('number_of_washroom',$post->ID); ?><img src="<?php echo esc_url(get_template_directory_uri());?>/images/bath_icon.png"></li>
+                                                                        <li>
+                                                                            <?php echo get_field('parking_capacity',$post->ID); ?><i class="fa fa-car" aria-hidden="true"></i></li>
+                                                                    </ul>
+                                                                    <div class="price">
+                                                                        <label>price :</label>
+                                                                        <?php if($slug != 'upcoming_auction'){ echo get_field('property_price',$post->ID);} else
 																			{ echo get_field('property_price_auction',$post->ID);}																?>
-																	</div>
-																</div>
-															</div>
-														</div>
-													</a>
-												</div>
-											<?php  
+                                                                    </div>
+                                                                </div>
+                                                            </div>
+                                                        </div>
+                                                    </a>
+                                                </div>
+                                                <?php  
 											} } else{ 
 												for($j=0;$j<$no;$j++){
 												if($day == $days[$j]){?>
-												 <div class="col-md-3">
-													<a href="<?php the_permalink(); ?>" class="box2">
-														<div class="list_img">
-														<?php $newpost = $post->ID;
+                                                    <div class="col-md-3 col-sm-3">
+                                                        <a href="<?php the_permalink(); ?>" class="box2">
+                                                            <div class="list_img">
+                                                                <?php $newpost = $post->ID;
 														 $image_attributes = wp_get_attachment_image_src(get_post_thumbnail_id( $newpost ),'news_tile' );
 															$url = $image_attributes[0];
 															?>
-															<img src="<?php echo $url; ?>">
-															<?php if($slug == 'recent_sales'){
+                                                                    <img src="<?php echo $url; ?>">
+                                                                    <?php if($slug == 'recent_sales'){
 																echo '<h2 class="sold">SOLD</h2>';
 															} ?>
-														</div>
-														<div class="inner_box">
-															<div class="pad">
-																<h2><?php the_title();?></h2>
-																<h5><?php echo get_field('sub_title',$post->ID); ?></h5>
-																<p><?php echo $days[$j]; ?> <?php echo date(' j, F',time()+86400*$i); ?></p>
-																<p><?php echo get_field('time_for_visit',$post->ID); ?></p>
-															</div>
-															<div class="all_detail">
-																<div class="pad">
-																	<ul>
-																		<li><?php echo get_field('number_of_bedroom',$post->ID); ?><i class="fa fa-bed" aria-hidden="true"></i></li>
-																		<li><?php echo get_field('number_of_washroom',$post->ID); ?><img src="<?php echo esc_url(get_template_directory_uri());?>/images/bath_icon.png"></li>
-																		<li><?php echo get_field('parking_capacity',$post->ID); ?><i class="fa fa-car" aria-hidden="true"></i></li>
-																	</ul>
-																	<div class="price">
-																		<label>price :</label><?php if($slug != 'upcoming_auction'){ echo get_field('property_price',$post->ID);} else
+                                                            </div>
+                                                            <div class="inner_box">
+                                                                <div class="pad">
+                                                                    <h2><?php the_title();?></h2>
+                                                                    <h5><?php echo get_field('sub_title',$post->ID); ?></h5>
+                                                                    <p>
+                                                                        <?php echo $days[$j]; ?>
+                                                                            <?php echo date(' j, F',time()+86400*$i); ?>
+                                                                    </p>
+                                                                    <p>
+                                                                        <?php echo get_field('time_for_visit',$post->ID); ?>
+                                                                    </p>
+                                                                </div>
+                                                                <div class="all_detail">
+                                                                    <div class="pad">
+                                                                        <ul>
+                                                                            <li>
+                                                                                <?php echo get_field('number_of_bedroom',$post->ID); ?><i class="fa fa-bed" aria-hidden="true"></i></li>
+                                                                            <li>
+                                                                                <?php echo get_field('number_of_washroom',$post->ID); ?><img src="<?php echo esc_url(get_template_directory_uri());?>/images/bath_icon.png"></li>
+                                                                            <li>
+                                                                                <?php echo get_field('parking_capacity',$post->ID); ?><i class="fa fa-car" aria-hidden="true"></i></li>
+                                                                        </ul>
+                                                                        <div class="price">
+                                                                            <label>price :</label>
+                                                                            <?php if($slug != 'upcoming_auction'){ echo get_field('property_price',$post->ID);} else
 																			{ echo get_field('property_price_auction',$post->ID);}																?>
-																	</div>
-																</div>
-															</div>
-														</div>
-													</a>
-												</div>
-											<?php } } 
+                                                                        </div>
+                                                                    </div>
+                                                                </div>
+                                                            </div>
+                                                        </a>
+                                                    </div>
+                                                    <?php } } 
 											}
 									} 
 								}
 							} 
 						} ?>
-								</div>
-						</div>
-                       
+                                        </div>
+                                    </div>
+
+                                </div>
+                                <?php } $a++; } ?>
+                        </div>
+
                     </div>
-					<?php } $a++; } ?>
-            </div>
-
+                </div>
+            </section>
         </div>
-		</div>
-    </section>
-   </div>
 
     </section>
 
 
-<?php get_footer(); 
+    <?php get_footer(); 
 ?>

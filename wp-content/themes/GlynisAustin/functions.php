@@ -535,7 +535,7 @@ function wpjobusRegisterForm()
     $login_data['user_login'] = $username;
     $login_data['user_password'] = $password;
     wp_signon( $login_data, false );
-	echo $password;
+	//echo $password;
 	echo "3";	
 		
 	}	
@@ -624,7 +624,7 @@ function news_init() {
 		'has_archive'        => true,
 		'hierarchical'       => false,
 		'menu_position'      => null,
-		'supports'           => array( 'title', 'editor', 'thumbnail', )
+		'supports'           => array( 'title', 'editor', 'thumbnail','comments' )
 	);
 
 	register_post_type( 'news', $args );
@@ -919,7 +919,7 @@ add_filter('acf/load_field/name=post_relate_with', 'my_acf_load_field5');
 
 function my_acf_load_field4( $field )
 {
-
+	
 	$args = array(
 		'type'                     => 'buyer-guide',
 		'orderby'                  => 'term_id',
@@ -939,9 +939,45 @@ function my_acf_load_field4( $field )
 	); */
 
     return $field;
+
 }
 
-add_filter('acf/load_field/name=select_category_buyer', 'my_acf_load_field4');
+add_filter('acf/load_field/name=buyer_category', 'my_acf_load_field4');
+
+/********** Load taxonomy for Property type  *********************/
+
+function my_acf_load_field6( $field )
+{
+		 $field['choices']= array(
+			'1' => 'House',
+			'2' => 'Apartment / Unit',
+			'3' => 'Townhouse',
+			'4' => 'New Development',
+			'5' => 'Vacant Land',
+			'6' => 'Commercial',
+			'7' => 'Acreage / Rural',
+	); 
+
+    return $field;
+}
+
+add_filter('acf/load_field/name=property_type', 'my_acf_load_field6');
+
+/********** Property For  *********************/
+
+function my_acf_load_field7( $field )
+{
+		 $field['choices']= array(
+			'1' => 'Sale',
+			'2' => 'Sold',
+			'3' => 'Auction',
+			'4' => 'Off market home'
+	); 
+
+    return $field;
+}
+
+add_filter('acf/load_field/name=property_for', 'my_acf_load_field7');
 
 
 /* ********************* Community custom post and texonomy **************************** */
@@ -1157,3 +1193,32 @@ function create_buyer_taxonomies() {
 
 	register_taxonomy( 'buyer-guide-category', 'buyer-guide', $args );
 }
+
+
+add_action('save_post','save_post_callback');
+function save_post_callback($post_id){
+	
+    global $post; 
+	$post = get_post($post_id);
+	
+    if ($post->post_type == 'property'){
+		
+		global $wpdb;
+		$wpdb->delete( 'properties', array( 'post_id' => $post_id  ));
+		
+		$id = $post->ID;
+		$cid = get_field('property_for',$post->ID);
+		$area = strip_tags(get_field('address',$post->ID));	
+		$type = get_field('property_type',$post->ID);
+		$bed = get_field('number_of_bedroom',$post->ID);
+		$bath = get_field('number_of_washroom',$post->ID);
+		$parking = get_field('parking_capacity',$post->ID);
+		$price = get_field('property_price',$post->ID);
+		
+		
+		
+			$wpdb->insert('properties', array('post_id' => $id, 'status' => $cid, 'area' => $area, 'type' => $type, 'bedrooms' => $bed, 'bathrooms' => $bath, 'parking' => 2, 'price' => $price) );
+	}
+}
+
+

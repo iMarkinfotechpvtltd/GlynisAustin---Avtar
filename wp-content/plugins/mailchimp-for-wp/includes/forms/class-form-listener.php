@@ -136,7 +136,7 @@ class MC4WP_Form_Listener {
 		}
 
 		// Success! Did we update or newly subscribe?
-		if( $result->status === 'subscribed' && $result->timestamp_signup < $result->last_changed ) {
+		if( $result->status === 'subscribed' && $result->was_already_on_list ) {
 			$form->add_message('updated');
 		} else {
 			$form->add_message('subscribed');
