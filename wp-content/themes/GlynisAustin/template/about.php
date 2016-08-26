@@ -7,7 +7,7 @@ $thumb = wp_get_attachment_image_src($image, 'full' );
 ?>
         <section class="banner inner_banner" style="background: url(<?php echo $url = $thumb['0'];?>);">
             <div class="headline">
-                <h2>our story</h2>
+                <h2>About us</h2>
             </div>
         </section>
         <section class="about_section">
@@ -50,25 +50,26 @@ $thumb = wp_get_attachment_image_src($image, 'full' );
             <div class="parallax_div">
                 <div class="container">
                     <div class="count_box">
-                        <h3><?php echo get_field('properties_sold',86); ?></h3>
+                        <h3 class='numscroller ' data-slno='1' data-min='0' data-max='<?php echo get_field('properties_sold',86); ?>' data-delay='10' data-increment="9">0</h3>
                         <span class="line_mid"></span>
                         <h6>Properties Sold</h6>
                     </div>
                     <div class="count_box">
-                        <h3><?php echo get_field('happy_clients',86); ?></h3>
+                        <h3 class='numscroller ' data-slno='1' data-min='0' data-max='<?php echo get_field('happy_clients',86); ?>' data-delay='10' data-increment="9">0</h3>
                         <span class="line_mid"></span>
                         <h6>Happy Clients</h6>
                     </div>
                     <div class="count_box">
-                        <h3><?php echo get_field('years_of_experince',86); ?></h3>
+                        <h3 class='numscroller ' data-slno='1' data-min='0' data-max='<?php echo get_field('years_of_experince',86); ?>' data-delay='10' data-increment="9">0</h3>
                         <span class="line_mid"></span>
                         <h6>Years of Experince</h6>
                     </div>
                     <div class="count_box">
-                        <h3><?php echo get_field('cups_of_coffee',86); ?></h3>
+                        <h3 class='numscroller ' data-slno='1' data-min='0' data-max='<?php echo get_field('cups_of_coffee',86); ?>' data-delay='10' data-increment="9">0</h3>
                         <span class="line_mid"></span>
                         <h6>Cups of Coffee</h6>
                     </div>
+                   
                 </div>
             </div>
             <div class="exprnc_div">

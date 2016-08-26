@@ -29,19 +29,34 @@ if($p_type != 0)
 	$query = $query." AND type = $p_type";
 }
 
-if($bedrooms != 0)
+if(($bedrooms != 0) && ($bedrooms < 5))
 {
 	$query = $query." AND bedrooms = $bedrooms";
 }
 
-if($bathrooms != 0)
+if($bedrooms >= 5)
+{
+	$query = $query." AND bedrooms >= $bedrooms";
+}
+
+if(($bathrooms != 0) && ($bathrooms < 5))
 {
 	$query = $query." AND bathrooms = $bathrooms";
 }
 
-if($parking != 0)
+if($bathrooms >= 5)
+{
+	$query = $query." AND bathrooms >= $bathrooms";
+}
+
+if(($parking != 0) && ($parking < 5))
 {
 	$query = $query." AND parking = $parking";
+}
+
+if($parking >= 5)
+{
+	$query = $query." AND parking >= $parking";
 }
 
 if($minprice != 0)

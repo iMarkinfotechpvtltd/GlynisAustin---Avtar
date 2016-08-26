@@ -7,7 +7,7 @@ $thumb = wp_get_attachment_image_src($image, 'full' );
 ?>
 <section class="banner inner_banner" style="background: url(<?php echo $url = $thumb['0'];?>);">
         <div class="headline">
-            <h2></h2>
+            <h2>Buyer Guides</h2>
         </div>
     </section>
     <section class="sellerguide">

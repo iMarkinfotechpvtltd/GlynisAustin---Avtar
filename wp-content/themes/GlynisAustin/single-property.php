@@ -126,7 +126,7 @@ $cata_name = $name1[0];?>
                                 <?php echo get_field('parking_capacity',$post->ID); ?><i aria-hidden="true" class="fa fa-car"></i></li>
                         </ul>
                         <div class="adrs_div">
-                            <h3><?php if($name1[0] == 'Upcoming Auction'){ echo "Auction";} else if($name1[0] == 'Recent Sales'){ echo "Sold";} else { echo "For Sale";}?></h3>
+                            <h3><?php if($name1[0] == 'Upcoming Auctions'){ echo "Auction";} else if($name1[0] == 'Recent Sales'){ echo "Sold";} else { echo "For Sale";}?></h3>
                             <a class="tltp" href="#" data-toggle="tooltip" data-placement="left" title="Add To Calender">
                                 <p>Address :</p>
                                 <p>
@@ -309,7 +309,7 @@ $cata_name = $name1[0];?>
                     <p>
                         <?php echo $term->description; ?>
                     </p>
-                    <a href="#">click for more</a>
+                    <a href="<?php echo get_category_link( $term->term_id )?>">click for more</a>
                 </div>
             </div>
             <div class="slide_right">

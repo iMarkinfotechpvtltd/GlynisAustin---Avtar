@@ -18,8 +18,8 @@ $thumb = wp_get_attachment_image_src($image, 'full' );
                             <select id="p_catagory">
                                 <option value="0">Any</option>
                                 <option value="1">Sale</option>
-                                <option value="2">Sold</option>
                                 <option value="3">Auction</option>
+								<option value="2">Sold</option>
                             </select>
                         </div>
                         <div class="outer1">
@@ -49,7 +49,7 @@ $thumb = wp_get_attachment_image_src($image, 'full' );
                                 <option value="2">2</option>
                                 <option value="3">3</option>
                                 <option value="4">4</option>
-                                <option value="5">5</option>
+                                <option value="5">5 and more</option>
                             </select>
                         </div>
                         <div class="outer4">
@@ -59,7 +59,7 @@ $thumb = wp_get_attachment_image_src($image, 'full' );
                                 <option value="2">2</option>
                                 <option value="3">3</option>
                                 <option value="4">4</option>
-                                <option value="5">5</option>
+                                <option value="5">5 and more</option>
                             </select>
                         </div>
                         <div class="outer5">
@@ -69,7 +69,7 @@ $thumb = wp_get_attachment_image_src($image, 'full' );
                                 <option value="2">2</option>
                                 <option value="3">3</option>
                                 <option value="4">4</option>
-                                <option value="5">5</option>
+                                <option value="5">5 and more</option>
                             </select>
                         </div>
 
@@ -131,7 +131,8 @@ $thumb = wp_get_attachment_image_src($image, 'full' );
 													$url = $image_attributes[0];
 													?>
                                                                 <img src="<?php echo $url; ?>">
-                                                                <?php if($slug == 'recent_sales'){
+																
+                                                                <?php if($current_category == 'Recent Sales'){
 														echo '<h2 class="sold">SOLD</h2>';
 													} ?>
                                                         </div>
@@ -272,7 +273,7 @@ if($l == $day){
                                     },
                                     success: function (resp) {
                                         if (resp != "") {
-                                            alert(resp);
+                                            //alert(resp);
                                             jQuery(".asd").append(resp);
 
                                         }

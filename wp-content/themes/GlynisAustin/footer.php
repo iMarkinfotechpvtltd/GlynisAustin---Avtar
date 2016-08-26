@@ -208,7 +208,7 @@
                     jQuery(form).ajaxSubmit({
                         type: "POST",
                         data: jQuery(form).serialize(),
-                        url: '<?php echo admin_url('admin-ajax.php'); ?>',
+                        url: '<?php echo admin_url('admin-ajax.php '); ?>',
                         success: function (data) {
 
                             if (data == 1) {
@@ -256,7 +256,7 @@
                             <input type="hidden" name="action" value="wpjobusRegisterForm" />
                             <?php wp_nonce_field( 'wpjobusRegister_html', 'wpjobusRegister_nonce' ); ?>
                                 <input name="submit" type="submit" value="<?php _e( 'Register', 'agrg' ); ?>" class="popup_btn">
-                                <p>Already hace an account? <a class="regstr" href="#" data-toggle="modal" data-target="#loginModal" data-dismiss="modal">Sign in here</a></p>
+                                <p>Already have an account? <a class="regstr" href="#" data-toggle="modal" data-target="#loginModal" data-dismiss="modal">Sign in here</a></p>
                         </div>
                     </div>
                 </form>
@@ -313,9 +313,9 @@
                     jQuery(form).ajaxSubmit({
                         type: "POST",
                         data: jQuery(form).serialize(),
-                        url: '<?php echo admin_url('admin-ajax.php'); ?>',
+                        url: '<?php echo admin_url('admin-ajax.php '); ?>',
                         success: function (data) {
-                            
+
                             if (data == 1) {
                                 alert('Username Already Exists');
                             }
@@ -345,7 +345,7 @@
                     <h4 class="modal-title">Book An Appraisal</h4>
                 </div>
                 <div class="modal-body">
-                    <?php echo do_shortcode('[contact-form-7 id="59" title="get in touch"]'); ?>
+                    <?php echo do_shortcode('[contact-form-7 id="455" title="appraisal form"]'); ?>
                 </div>
                 <div class="modal-footer">
 
@@ -376,24 +376,24 @@
         </div>
     </div>
 
-	
-	
-	<!-- forget Model -->
+
+
+    <!-- forget Model -->
     <div class="modal fade form_popup" id="forget">
         <div class="modal-dialog" role="document">
-			<div class="modal-content">
+            <div class="modal-content">
                 <div class="modal-header">
                     <button type="button" class="close" data-dismiss="modal">&times;</button>
                     <h4 class="modal-title">Forgot Password</h4>
                 </div>
                 <div class="modal-body">
                     <input id="userdata" type="text" class="required" name="userdata" placeholder="Username or E-mail">
-					<input type="submit" id="changepass" value="SUBMIT">
+                    <input type="submit" id="changepass" value="SUBMIT">
                 </div>
                 <div class="modal-footer">
 
                 </div>
-            </div>	
+            </div>
         </div>
     </div>
 
@@ -411,245 +411,288 @@
     <script src="<?php echo esc_url(get_template_directory_uri());?>/js/custom_ie.js"></script>
     <script src="<?php echo esc_url(get_template_directory_uri());?>/js/main.js"></script>
     <script src="<?php echo esc_url(get_template_directory_uri());?>/js/jquery.BlackAndWhite.js"></script>
-	<script src="<?php echo esc_url(get_template_directory_uri());?>/js/ajax-auth-script.js"></script>
-<script>
-	jQuery("#changepass").click(function () {
-
-		var userdata = jQuery('#userdata').val();
-		//alert(userdata);
-		jQuery.ajax({
-			type: "POST",
-			url: "<?php echo esc_url(get_template_directory_uri());?>/ajax/forget-pass.php",
-			data: {
-				userdata: userdata,
-			},
-			success: function (resp) {
-				if (resp != "") {
-					alert(resp);
-					window.location.href="<?php echo site_url(); ?>";
-				}
-			}
-		});
-	});
-</script>	
-<script>
-jQuery(function () {
-jQuery('[data-toggle="tooltip"]').tooltip()
-})
-</script>
- <?php if(!is_singular(property)) { ?>
+    <script src="<?php echo esc_url(get_template_directory_uri());?>/js/ajax-auth-script.js"></script>
+    <script src="<?php echo esc_url(get_template_directory_uri());?>/js/numscroller-1.0.js"></script>
     <script>
-        jQuery(function () {
-            jQuery('[data-toggle="tooltip"]').tooltip({
-                trigger: 'manual'
-            }).tooltip('show');
-        });
+        jQuery("#changepass").click(function () {
 
-        jQuery(window).scroll(function () {
-            if (jQuery(window).scrollTop() > 1100) { // scroll down abit and get the action   
-                jQuery(".progress-bar").each(function () {
-                    each_bar_width = jQuery(this).attr('aria-valuenow');
-                    jQuery(this).width(each_bar_width + '%');
-                });
-
-            }
+            var userdata = jQuery('#userdata').val();
+            //alert(userdata);
+            jQuery.ajax({
+                type: "POST",
+                url: "<?php echo esc_url(get_template_directory_uri());?>/ajax/forget-pass.php",
+                data: {
+                    userdata: userdata,
+                },
+                success: function (resp) {
+                    if (resp != "") {
+                        alert(resp);
+                        window.location.href = "<?php echo site_url(); ?>";
+                    }
+                }
+            });
         });
     </script>
-<?php } ?>
-    <?php $id = get_the_ID(); 
-	if(($id == 269) || ($id == 422)){?>
-        <script src="https://ajax.googleapis.com/ajax/libs/jqueryui/1.11.2/jquery-ui.min.js"></script>
-        <?php } ?>
-            <script type="text/javascript" src="<?php echo esc_url(get_template_directory_uri()); ?>/js/jquery.validate.js"></script>
-            <script type="text/javascript" src="<?php echo esc_url(get_template_directory_uri()); ?>/js/form.js"></script>
+    <script>
+        jQuery(function () {
+            jQuery('[data-toggle="tooltip"]').tooltip()
+        })
+    </script>
+    <?php if(!is_singular(property)) { ?>
+        <script>
+            jQuery(function () {
+                jQuery('[data-toggle="tooltip"]').tooltip({
+                    trigger: 'manual'
+                }).tooltip('show');
+            });
 
-            <script>
-                jQuery('.carousel').carousel({
-                    pause: 'none'
-                });
-            </script>
-
-            <script>
-                jQuery(document).ready(function () {
-
-                    jQuery("#news").owlCarousel({
-
-                        autoPlay: false, //Set AutoPlay to 3 seconds
-                        navigation: true,
-                        navigationText: ["", ""],
-                        items: 4,
-                        itemsDesktop: [1199, 4],
-                        itemsDesktopSmall: [979, 3],
-                        itemsTablet: [768, 3],
-                        itemsMobile: [479, 1]
-
+            jQuery(window).scroll(function () {
+                if (jQuery(window).scrollTop() > 1100) { // scroll down abit and get the action   
+                    jQuery(".progress-bar").each(function () {
+                        each_bar_width = jQuery(this).attr('aria-valuenow');
+                        jQuery(this).width(each_bar_width + '%');
                     });
-
-                });
-            </script>
-            <script>
-                jQuery(document).ready(function () {
-
-                    jQuery("#open, #recentsale, #property, #auct").owlCarousel({
-
-                        autoPlay: false, //Set AutoPlay to 3 seconds
-                        navigation: true,
-                        navigationText: ["", ""],
-                        items: 4,
-                        itemsDesktop: [1199, 4],
-                        itemsDesktopSmall: [979, 2],
-                        itemsTablet: [768, 2],
-                        itemsMobile: [479, 1]
-
-                    });
-
-                });
-            </script>
-            <script>
-                // grab the initial top offset of the navigation 
-                var stickyNavTop = jQuery('body').offset().top;
-                // our function that decides weather the navigation bar should have "fixed" css position or not.
-                var stickyNav = function () {
-                    var scrollTop = jQuery(window).scrollTop(); // our current vertical position from the top
-
-                    // if we've scrolled more than the navigation, change its position to fixed to stick to top,
-                    // otherwise change it back to relative
-                    if (scrollTop > 10) {
-                        jQuery('header').addClass('sticky') & jQuery('.responsive-menu-button').addClass('move_scroll');
-                    } else {
-                        jQuery('header').removeClass('sticky') & jQuery('.responsive-menu-button').removeClass('move_scroll');
-                    }
-
-                };
-
-                stickyNav();
-                // and run it again every time you scroll
-                jQuery(window).scroll(function () {
-                    stickyNav();
-                });
-            </script>
-
-            <script>
-                var wow = new WOW({
-                    boxClass: 'wow', // animated element css class (default is wow)
-                    animateClass: 'animated', // animation css class (default is animated)
-                    offset: 0, // distance to the element when triggering the animation (default is 0)
-                    mobile: true, // trigger animations on mobile devices (default is true)
-                    live: true, // act on asynchronously loaded content (default is true)
-                    callback: function (box) {
-                        // the callback is fired every time an animation is started
-                        // the argument that is passed in is the DOM node being animated
-                    },
-                    scrollContainer: null // optional scroll container selector, otherwise use window
-                });
-                wow.init();
-            </script>
-            <script>
-                jQuery('#google-maps').find('iframe').css('pointer-events', 'none');
-                jQuery(function () {
-                    jQuery('#google-maps').click(function (e) {
-                        jQuery(this).find('iframe').css('pointer-events', 'auto');
-                    }).mouseleave(function (e) {
-                        jQuery(this).find('iframe').css('pointer-events', 'none');
-                    });
-                })
-            </script>
-            <script>
-                jQuery(document).ready(function () {
-
-                    jQuery("#client_slider").owlCarousel({
-                        autoPlay: 5000, //Set AutoPlay to 3 seconds
-                        navigation: true,
-                        navigationText: ["", ""],
-                        items: 1,
-                        itemsDesktop: [1199, 1],
-                        itemsDesktopSmall: [979, 1],
-                        itemsTablet: [768, 1],
-                        itemsMobile: [479, 1]
-
-                    });
-
-                });
-            </script>
-            <script>
-                function collision($div1, $div2) {
-                    var x1 = $div1.offset().left;
-                    var w1 = 40;
-                    var r1 = x1 + w1;
-                    var x2 = $div2.offset().left;
-                    var w2 = 40;
-                    var r2 = x2 + w2;
-
-                    if (r1 < x2 || x1 > r2) return false;
-                    return true;
 
                 }
-
-                // slider call
-
-                jQuery('#slider').slider({
-                    range: true,
-                    min: 50,
-                    max: 500,
-                    values: [0, 500],
-                    slide: function (event, ui) {
-
-                        jQuery('.ui-slider-handle:eq(0) .price-range-min').html('$' + ui.values[0] + 'K');
-                        jQuery('.ui-slider-handle:eq(1) .price-range-max').html('$' + ui.values[1] + 'K');
-                        jQuery('.price-range-both').html('<i>$' + ui.values[0] + 'K' + ' - </i>$' + ui.values[1] + 'K');
-
-                        //
-
-                        if (ui.values[0] == ui.values[1]) {
-                            jQuery('.price-range-both i').css('display', 'none');
-                        } else {
-                            jQuery('.price-range-both i').css('display', 'inline');
-                        }
-
-                        //
-
-                        if (collision(jQuery('.price-range-min'), jQuery('.price-range-max')) == true) {
-                            jQuery('.price-range-min, .price-range-max').css('opacity', '0');
-                            jQuery('.price-range-both').css('display', 'block');
-                        } else {
-                            jQuery('.price-range-min, .price-range-max').css('opacity', '1');
-                            jQuery('.price-range-both').css('display', 'none');
-                        }
-
-                    }
-                });
-
-                jQuery('.ui-slider-range').append('<span class="price-range-both value"><i>$' + jQuery('#slider').slider('values', 0) + 'K' + ' - </i>' + jQuery('#slider').slider('values', 1) + '</span>');
-
-                jQuery('.ui-slider-handle:eq(0)').append('<span class="price-range-min value">$' + jQuery('#slider').slider('values', 0) + 'K' + '</span>');
-
-                jQuery('.ui-slider-handle:eq(1)').append('<span class="price-range-max value">$' + jQuery('#slider').slider('values', 1) + 'K' + '</span>');
-            </script>
-
-
-            
-            <?php  $id = get_the_ID();
-
-		if(($id == 292) || ($id == 327)) {?>
-                <script src="http://ajax.googleapis.com/ajax/libs/jquery/1.7.1/jquery.min.js"></script>
-
-                <script src="<?php echo esc_url(get_template_directory_uri());?>/js/jquery.fancybox.js"></script>
-                <script type="text/javascript">
-                    jQuery(document).ready(function ($) {
-                        jQuery(".various").fancybox({
-                            maxWidth: 800,
-                            maxHeight: 600,
-                            fitToView: false,
-                            width: '70%',
-                            height: '70%',
-                            autoSize: false,
-                            closeClick: false,
-                            openEffect: 'elastic',
-                            closeEffect: 'none'
-                        });
-                    });
-                </script>
+            });
+        </script>
+        <?php } ?>
+            <?php $id = get_the_ID(); 
+	if(($id == 269) || ($id == 422)){?>
+                <script src="https://ajax.googleapis.com/ajax/libs/jqueryui/1.11.2/jquery-ui.min.js"></script>
                 <?php } ?>
-                    </body>
+                    <script type="text/javascript" src="<?php echo esc_url(get_template_directory_uri()); ?>/js/jquery.validate.js"></script>
+                    <script type="text/javascript" src="<?php echo esc_url(get_template_directory_uri()); ?>/js/form.js"></script>
 
-                    </html>
+                    <script>
+                        jQuery('.carousel').carousel({
+                            pause: 'none'
+                        });
+                    </script>
+
+                    <script>
+                        jQuery(document).ready(function () {
+
+                            jQuery("#news").owlCarousel({
+
+                                autoPlay: false, //Set AutoPlay to 3 seconds
+                                navigation: true,
+                                navigationText: ["", ""],
+                                items: 4,
+                                itemsDesktop: [1199, 4],
+                                itemsDesktopSmall: [979, 3],
+                                itemsTablet: [768, 3],
+                                itemsMobile: [479, 1]
+
+                            });
+
+                        });
+                    </script>
+                    <script>
+                        jQuery(document).ready(function () {
+
+                            jQuery("#open, #recentsale, #property, #auct").owlCarousel({
+
+                                autoPlay: false, //Set AutoPlay to 3 seconds
+                                navigation: true,
+                                navigationText: ["", ""],
+                                items: 4,
+                                itemsDesktop: [1199, 4],
+                                itemsDesktopSmall: [979, 2],
+                                itemsTablet: [768, 2],
+                                itemsMobile: [479, 1]
+
+                            });
+
+                        });
+                    </script>
+                    <script>
+                        // grab the initial top offset of the navigation 
+                        var stickyNavTop = jQuery('body').offset().top;
+                        // our function that decides weather the navigation bar should have "fixed" css position or not.
+                        var stickyNav = function () {
+                            var scrollTop = jQuery(window).scrollTop(); // our current vertical position from the top
+
+                            // if we've scrolled more than the navigation, change its position to fixed to stick to top,
+                            // otherwise change it back to relative
+                            if (scrollTop > 10) {
+                                jQuery('header').addClass('sticky') & jQuery('.responsive-menu-button').addClass('move_scroll');
+                            } else {
+                                jQuery('header').removeClass('sticky') & jQuery('.responsive-menu-button').removeClass('move_scroll');
+                            }
+
+                        };
+
+                        stickyNav();
+                        // and run it again every time you scroll
+                        jQuery(window).scroll(function () {
+                            stickyNav();
+                        });
+                    </script>
+
+                    <script>
+                        var wow = new WOW({
+                            boxClass: 'wow', // animated element css class (default is wow)
+                            animateClass: 'animated', // animation css class (default is animated)
+                            offset: 0, // distance to the element when triggering the animation (default is 0)
+                            mobile: true, // trigger animations on mobile devices (default is true)
+                            live: true, // act on asynchronously loaded content (default is true)
+                            callback: function (box) {
+                                // the callback is fired every time an animation is started
+                                // the argument that is passed in is the DOM node being animated
+                            },
+                            scrollContainer: null // optional scroll container selector, otherwise use window
+                        });
+                        wow.init();
+                    </script>
+                    <script>
+                        jQuery('#google-maps').find('iframe').css('pointer-events', 'none');
+                        jQuery(function () {
+                            jQuery('#google-maps').click(function (e) {
+                                jQuery(this).find('iframe').css('pointer-events', 'auto');
+                            }).mouseleave(function (e) {
+                                jQuery(this).find('iframe').css('pointer-events', 'none');
+                            });
+                        })
+                    </script>
+                    <script>
+                        jQuery(document).ready(function () {
+
+                            jQuery("#client_slider").owlCarousel({
+                                autoPlay: 5000, //Set AutoPlay to 3 seconds
+                                navigation: true,
+                                navigationText: ["", ""],
+                                items: 1,
+                                itemsDesktop: [1199, 1],
+                                itemsDesktopSmall: [979, 1],
+                                itemsTablet: [768, 1],
+                                itemsMobile: [479, 1]
+
+                            });
+
+                        });
+                    </script>
+                    <script>
+                        jQuery("p").filter(function () {
+
+                            var html = jQuery(this).html();
+
+                            if (html == '' || html == '&nbsp;')
+                                return true;
+
+                        }).remove();
+                    </script>
+					
+<script>
+jQuery('#menu-item-442 , #menu-item-449 ').click(function(){
+	//alert('aaaaaaaaa');
+	<?php if ( is_user_logged_in() ) { ?>
+	window.open('http://glynisaustin.stagingdevsite.com/dev/property-category/off_market_home/');
+	<?php } else { 
+?>
+	jQuery('#loginModal').modal()
+	jQuery('#loginModal').modal({
+		keyboard: false
+	})
+	jQuery('#loginModal').modal('show')
+	<?php
+} ?>
+});
+</script>
+                    <script>
+                        function collision($div1, $div2) {
+                            var x1 = $div1.offset().left;
+                            var w1 = 40;
+                            var r1 = x1 + w1;
+                            var x2 = $div2.offset().left;
+                            var w2 = 40;
+                            var r2 = x2 + w2;
+
+                            if (r1 < x2 || x1 > r2) return false;
+                            return true;
+
+                        }
+
+                        // slider call
+
+                        jQuery('#slider').slider({
+                            range: true,
+                            min: 100,
+                            max: 1000,
+                            values: [100, 1000],
+                            slide: function (event, ui) {
+
+                                jQuery('.ui-slider-handle:eq(0) .price-range-min').html('$' + ui.values[0] + 'K');
+                                jQuery('.ui-slider-handle:eq(1) .price-range-max').html('$' + ui.values[1] + 'K');
+                                jQuery('.price-range-both').html('<i>$' + ui.values[0] + 'K' + ' - </i>$' + ui.values[1] + 'K');
+
+                                //
+
+                                if (ui.values[0] == ui.values[1]) {
+                                    jQuery('.price-range-both i').css('display', 'none');
+                                } else {
+                                    jQuery('.price-range-both i').css('display', 'inline');
+                                }
+
+                                //
+
+                                if (collision(jQuery('.price-range-min'), jQuery('.price-range-max')) == true) {
+                                    jQuery('.price-range-min, .price-range-max').css('opacity', '0');
+                                    jQuery('.price-range-both').css('display', 'block');
+                                } else {
+                                    jQuery('.price-range-min, .price-range-max').css('opacity', '1');
+                                    jQuery('.price-range-both').css('display', 'none');
+                                }
+
+                            }
+                        });
+
+                        jQuery('.ui-slider-range').append('<span class="price-range-both value"><i>$' + jQuery('#slider').slider('values', 0) + 'K' + ' - </i>' + jQuery('#slider').slider('values', 1) + '</span>');
+
+                        jQuery('.ui-slider-handle:eq(0)').append('<span class="price-range-min value">$' + jQuery('#slider').slider('values', 0) + 'K' + '</span>');
+
+                        jQuery('.ui-slider-handle:eq(1)').append('<span class="price-range-max value">$' + jQuery('#slider').slider('values', 1) + 'K' + '</span>');
+                    </script>
+
+
+
+                    <?php  $id = get_the_ID();
+
+		if(($id == 292) || ($id == 327) ) {?>
+                        <script src="http://ajax.googleapis.com/ajax/libs/jquery/1.7.1/jquery.min.js"></script>
+
+                        <script src="<?php echo esc_url(get_template_directory_uri());?>/js/jquery.fancybox.js"></script>
+                        <script type="text/javascript">
+                            jQuery(document).ready(function ($) {
+                                jQuery(".various").fancybox({
+                                    maxWidth: 800,
+                                    maxHeight: 600,
+                                    fitToView: false,
+                                    width: '70%',
+                                    height: '70%',
+                                    autoSize: false,
+                                    closeClick: false,
+                                    openEffect: 'elastic',
+                                    closeEffect: 'none'
+                                });
+                            });
+                        </script>
+                        <script type="text/javascript">
+                            var _gaq = _gaq || [];
+                            _gaq.push(['_setAccount', 'UA-36251023-1']);
+                            _gaq.push(['_setDomainName', 'jqueryscript.net']);
+                            _gaq.push(['_trackPageview']);
+
+                            (function () {
+                                var ga = document.createElement('script');
+                                ga.type = 'text/javascript';
+                                ga.async = true;
+                                ga.src = ('https:' == document.location.protocol ? 'https://ssl' : 'http://www') + '.google-analytics.com/ga.js';
+                                var s = document.getElementsByTagName('script')[0];
+                                s.parentNode.insertBefore(ga, s);
+                            })();
+                        </script>
+                        <?php } ?>
+                            </body>
+
+                            </html>

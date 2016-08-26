@@ -7,7 +7,7 @@ $thumb = wp_get_attachment_image_src($image, 'full' );
 ?>
  <section class="banner inner_banner" style="background: url(<?php echo $url = $thumb['0'];?>);">
         <div class="headline">
-            <h2>testimonial</h2>
+            <h2>OUR CLIENTS SAY</h2>
         </div>
 
     </section>
@@ -87,7 +87,19 @@ $thumb = wp_get_attachment_image_src($image, 'full' );
 
     </section>
 
-
+<section class="get_in_touch">
+        <div class="container">
+            <div class="row">
+                <div class="col-md-10 col-md-offset-1">
+                    <div class="details">
+                        <h2>TAKE ADVANTAGE OF OUR LOCAL KNOWLEDGE</h2>
+                        <a href="<?php echo get_site_url(); ?>/contact">GET IN TOUCH <i class="fa fa-long-arrow-right" aria-hidden="true"></i></a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+	
  
  
  

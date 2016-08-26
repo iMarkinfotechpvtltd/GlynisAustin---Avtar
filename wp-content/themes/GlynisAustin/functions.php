@@ -1212,7 +1212,7 @@ function save_post_callback($post_id){
 		$type = get_field('property_type',$post->ID);
 		$bed = get_field('number_of_bedroom',$post->ID);
 		$bath = get_field('number_of_washroom',$post->ID);
-		$parking = get_field('parking_capacity',$post->ID);
+		$parking = get_field('parking_capacity',$post->ID); 
 		$price = get_field('property_price',$post->ID);
 		
 		
@@ -1220,5 +1220,4 @@ function save_post_callback($post_id){
 			$wpdb->insert('properties', array('post_id' => $id, 'status' => $cid, 'area' => $area, 'type' => $type, 'bedrooms' => $bed, 'bathrooms' => $bath, 'parking' => 2, 'price' => $price) );
 	}
 }
-
 

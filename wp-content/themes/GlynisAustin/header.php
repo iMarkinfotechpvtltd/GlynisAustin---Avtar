@@ -61,7 +61,7 @@
             <div class="left_part pull-left">
                 <ul>
                     <li>
-                        <a href="javascript:void(0)" data-target="#news-letter" data-toggle="modal">SUBSCRIBE TO GLYNIS AUSTIN PROPERTIES ALERTS</a>
+                        <a href="javascript:void(0)" data-target="#news-letter" data-toggle="modal">Subscribe To Our Weekly Newsletter</a>
                     </li>
                     <li>
                         <a href="<?php echo get_site_url(); ?>/career"> CAREERS</a>
@@ -92,9 +92,6 @@
                     <li>
                         <a href="<?php echo get_field('social_link_youtube',397); ?>" target="_blank"><i class="fa fa-youtube" aria-hidden="true"></i></a>
                     </li>
-                    <li>
-                        <a href="<?php echo get_field('social_link_pinterest',397); ?>" target="_blank"><i class="fa fa-pinterest-p" aria-hidden="true"></i></a>
-                    </li>
                 </ul>
             </div>
         </div>
@@ -107,21 +104,33 @@
         <?php } else { ?>
             <script>
                 jQuery("#menu-item-335").hide();
+				
             </script>
             <?php }
 			}?>
-
-                <?php function checkusermob(){
+	<script>
+	<?php function checkuser1(){
 				if ( is_user_logged_in() ) {?>
-                    <script>
-                        jQuery("#moblog").hide();
-                    </script>
-                    <?php } else { ?>
-                        <script>
-                            jQuery("#moblogout").hide();
-                        </script>
-                        <?php }
+			jQuery('#responsive-menu').find('#responsive-menu-item-323 a').hide();
+        <?php } else { ?>
+				jQuery('#responsive-menu').find('#responsive-menu-item-335 a').hide();
+            <?php }
 			}?>
+	</script>
+
+<?php /*function checkusermob(){
+if ( is_user_logged_in() ) {?>
+	<script>
+		jQuery("#moblog").hide();
+	</script>
+	<?php } else { ?>
+		<script>
+			jQuery("#moblogout").hide();
+		</script>
+		<?php }
+}*/?>
+
+
 
                             <header>
                                 <div class="container">
@@ -161,8 +170,22 @@
 						?>
 
                                             </ul>
-                                            <a class="lr" id="moblog" href="#" data-toggle="modal" data-target="#myModal">LOGIN/REGISTER</a>
-                                            <a class="lr" id="moblogout" href="<?php echo wp_logout_url( home_url() ); ?>">LOGOUT</a>
+                                            
+											<script>
+											jQuery('document').ready(function(){
+												jQuery('#responsive-menu').find('#responsive-menu-item-323 a').attr('data-target', '#loginModal');
+												jQuery('#responsive-menu').find('#responsive-menu-item-323 a').attr('data-toggle', 'modal');
+												jQuery('#responsive-menu').find('#responsive-menu-item-323 a').attr('href', 'javascript:void(0)');
+												jQuery('#responsive-menu').find('#responsive-menu-item-335 a').attr('href', '<?php echo wp_logout_url( home_url() ); ?>');
+												jQuery("#menu-item-449 a").attr('href', 'javascript:void(0)');
+											});
+											
+											</script>
+											<script>
+											jQuery('document').ready(function(){
+												<?php checkuser1();?>
+											});
+											</script>
                                             <script>
                                                 jQuery('ul.sub-menu').addClass('dropdown-menu1');
                                                 jQuery("ul li ul li").addClass("dropdown");
@@ -171,12 +194,19 @@
                                                 jQuery("#menu-item-323, .lr").attr('data-target', '#loginModal');
                                                 jQuery("#menu-item-323, .lr").attr('data-toggle', 'modal');
                                                 jQuery("#menu-item-323 a").attr('href', 'javascript:void(0)');
-                                                jQuery("#menu-item-343").attr('data-target', '#news-letter');
+												jQuery("#menu-item-442 a").attr('href', 'javascript:void(0)');
+												jQuery('#responsive-menu').find('#responsive-menu-item-323 a').attr('data-target', '#loginModal');
+												jQuery('#responsive-menu').find('#responsive-menu-item-323 a').attr('data-toggle', 'modal');
+												jQuery('#responsive-menu').find('#responsive-menu-item-323 a').attr('href', 'javascript:void(0)');
+												
+												jQuery("#menu-item-343").attr('data-target', '#news-letter');
                                                 jQuery("#menu-item-343").attr('data-toggle', 'modal');
                                                 jQuery("#menu-item-335 a").attr('href', '<?php echo wp_logout_url( home_url() ); ?>');
                                             </script>
+
+											
                                             <?php checkuser();?>
-                                                <?php checkusermob();?>
+                                                <?php /*checkusermob();*/?>
 
                                                    <div class="search">
                                                         <form action="" class="search-form" method="get" role="search">

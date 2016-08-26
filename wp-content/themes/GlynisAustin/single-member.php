@@ -74,7 +74,7 @@ echo '</pre>'; */
                     </ul>
                 </div>
             </div>
-            <section class="property_week">
+            <section class="property_week sngl_tab">
                 <div class="container">
                     <div class="property_tab">
                         <div class="tab-content">

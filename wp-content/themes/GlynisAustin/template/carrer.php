@@ -7,7 +7,7 @@ $thumb = wp_get_attachment_image_src($image, 'full' );
 ?>
 <section class="banner inner_banner" style="background: url(<?php echo $url = $thumb['0'];?>);">
         <div class="headline">
-            <h2>career</h2>
+            <h2>careers</h2>
         </div>
     </section>
     <section class="carrier">
@@ -34,8 +34,8 @@ $thumb = wp_get_attachment_image_src($image, 'full' );
 
                 <div class="main_sec">
                     <div class="mid_box">
-                        <h5>careers</h5>
-                        <h6>Oppurtunity</h6>
+                        <h5>career</h5>
+                        <h6>Opportunity</h6>
                     </div>
                     <div class="first">
                         <div class="img_o"></div>
@@ -52,18 +52,18 @@ $thumb = wp_get_attachment_image_src($image, 'full' );
             </div>
         </div>
     </section>
-    <section class="get_in_touch">
+    <!--<section class="get_in_touch">
         <div class="container">
             <div class="row">
                 <div class="col-md-10 col-md-offset-1">
                     <div class="details">
                         <h2>TAKE ADVANTAGE OF OUR LOCAL KNOWLEDGE</h2>
-                        <a href="<?php echo get_site_url(); ?>/contact">GET IN TOUCH <i class="fa fa-long-arrow-right" aria-hidden="true"></i></a>
+                        <a href="<?php //echo get_site_url(); ?>/contact">GET IN TOUCH <i class="fa fa-long-arrow-right" aria-hidden="true"></i></a>
                     </div>
                 </div>
             </div>
         </div>
-    </section>
+    </section> -->
    
  
  

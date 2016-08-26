@@ -80,14 +80,16 @@ get_header();
 					  'posts_per_page' =>3
 					  );
 					$my_query = new WP_Query($args);
+					$my_query1 = $my_query;
 					if( $my_query->have_posts() ) {
+						$z=0;
 					  while ($my_query->have_posts()) : $my_query->the_post(); ?>
                     <div class="item">
                         <div class="testim-box">
                             <div class="row">
                                 <div class="col-md-5 col-xs-12">
                                     <div class="lft">
-                                        <iframe width="420" height="315" src="<?php the_field('video_source',$my_query->ID);?>?rel=0&amp;controls=0&amp;showinfo=0&amp;autoplay=0"></iframe>
+										<a href="javascript:void(0)" data-toggle="modal" data-target="#myModal<?php echo $z; ?>"><?php the_post_thumbnail(); ?></a>    
                                     </div>
                                 </div>
                                 <div class="col-md-7 col-xs-12">
@@ -97,17 +99,34 @@ get_header();
                                         </p>
                                         <h3><?php the_title(); ?></h3>
                                         <h4><?php echo get_field('sub_title',$my_query->ID); ?></h4>
-                                        <a href="<?php echo get_site_url(); ?>/testimonial">click to hear more from our clients</a>
+                                        <a class="testi-btn"href="<?php echo get_site_url(); ?>/testimonial">click to hear more from our clients</a>
                                     </div>
                                 </div>
                             </div>
                         </div>
                     </div>
-                    <?php endwhile; 
+                    <?php $z++; endwhile; 
 					wp_reset_query(); } ?>
-
-            </div>
+			</div>
         </div>
+		<?php $z=0;
+		while ($my_query1->have_posts()) : $my_query1->the_post(); ?>
+		
+		<div class="modal fade" id="myModal<?php echo $z; ?>" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" data-backdrop="static" data-keyboard="false">
+  <div class="modal-dialog" role="document">
+    <div class="modal-content">
+      <div class="modal-header">
+        <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+      </div>
+      <div class="embed-responsive embed-responsive-16by9">
+        <iframe width="560" height="315" src="<?php echo get_field('video_source',$my_query1->ID); ?>" frameborder="0" allowfullscreen></iframe>
+      </div>
+      
+    </div>
+  </div>
+</div>
+		<?php $z++; endwhile; 
+		wp_reset_query(); ?>
     </section>
     <script>
         jQuery('.client_say_section').ready(function () {
@@ -130,7 +149,7 @@ get_header();
             <h2 class="title">This Week In Property</h2>
             <div class="property_tab">
                 <!-- Nav tabs -->
-                <ul class="nav nav-tabs" role="tablist">
+                <ul class="nav nav-tabs" id="lar-nav" role="tablist">
                     <?php 
 					$args = array(
 						'type'                     => 'property',
@@ -152,6 +171,27 @@ get_header();
                         <?php $a++; } ?>
                 </ul>
 
+				<ul class="nav nav-tabs" id="mob-nav" role="tablist">
+                    <?php 
+					$args = array(
+						'type'                     => 'property',
+						'orderby'                  => 'term_id',
+						'taxonomy'                 => 'property-category',
+						);
+					$a=1;
+					$categories = get_categories( $args );
+					foreach ( $categories as $category ) {
+					  $name = $category->name; 
+					  $slug = $category->slug;?>
+
+                        <li role="presentation" class="<?php if($a==1){ echo 'active';} ?>">
+                            <a href="#<?php echo $slug ?>" aria-controls="profile" role="tab" data-toggle="tab">
+                                <?php if($name == 'Open Times'){ echo 'OFI';} if($name == 'New Listings'){ echo 'New';} if($name == 'Upcoming Auctions'){ echo 'Auctions';} if($name == 'Recent Sales'){ echo 'Sold';}  if($name == 'Off-Market Homes'){ echo 'Off Market';}?>
+                            </a>
+                        </li>
+
+                        <?php $a++; } ?>
+                </ul>
                 <!-- Tab panes -->
                 <div class="tab-content">
                     <?php 
@@ -198,6 +238,7 @@ get_header();
 						{ $day = date('l',time()+86400*$i); 
 						if(($day == "Wednesday") || ($day == "Thursday") || ($day == "Saturday")) {
 									if(($slug != 'recent_sales') && ($slug != 'new_listing')){ ?>
+
                                                 <div class="item">
                                                     <a href="#" class="box1">
                                                         <h3><?php echo date('l',time()+86400*$i); ?></h3>
@@ -206,7 +247,7 @@ get_header();
                                                     </a>
                                                 </div>
 
-                                                <?php  }
+                                                <?php } 
 								 
 									$posts=get_posts(array(
 									   'showposts' => -1,
@@ -223,6 +264,7 @@ get_header();
 									$z=0;
 									foreach($posts as $post)
 									{ 
+											
 											$days=array();
 											$days = get_field('days_for_visit',$post1->ID); 
 											$no =count($days);
@@ -331,7 +373,8 @@ get_header();
                                         </div>
                                         <?php } ?>
                             </div>
-                            <a class="view_all_btn" href="<?php echo get_category_link( $category->term_id )?>">view all <?php if($slug == 'open_times'){ echo "open times";} if($slug == 'new_listing'){ echo "listing";} if($slug == 'off_market_home'){ echo "off market";} if($slug == 'recent_sales'){ echo "sales";} if($slug == 'upcoming_auction'){ echo "upcoming auction";}?> <i class="fa fa-long-arrow-right" aria-hidden="true"></i></a>
+							<?php if($slug != 'off_market_home'){ ?>
+                            <a class="view_all_btn" href="<?php echo get_category_link( $category->term_id )?>">view all <?php if($slug == 'open_times'){ echo "open times";} if($slug == 'new_listing'){ echo "listings";} if($slug == 'off_market_home'){ echo "off markets";} if($slug == 'recent_sales'){ echo "sales";} if($slug == 'upcoming_auction'){ echo "upcoming auctions";}?> <i class="fa fa-long-arrow-right" aria-hidden="true"></i></a> <?php } ?>
                         </div>
                         <?php $a++; } ?>
                 </div>
@@ -385,7 +428,7 @@ get_header();
     </section>
     <section class="news_section">
         <div class="container">
-            <h2 class="title">latest local news</h2>
+            <h2 class="title">latest news</h2>
             <div id="news">
 
 
